@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>信息卡片 · 世界杯延伸阅读</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f8f5f0;
+            font-family: 'Georgia', 'Times New Roman', '宋体', 'Songti SC', serif;
+            color: #2f2e2b;
+            line-height: 1.7;
+            padding: 2rem 1.2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page {
+            max-width: 860px;
+            width: 100%;
+        }
+
+        /* hero 区微缩卡片 */
+        .hero-card {
+            background: #ffffff;
+            border-radius: 28px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            padding: 2.2rem 2rem 2rem;
+            margin-bottom: 2.5rem;
+            border-left: 6px solid #dfc29e;
+        }
+
+        .hero-card h1 {
+            font-size: 2.2rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            color: #3b3a36;
+            margin-bottom: 0.25rem;
+        }
+
+        .hero-card .sub {
+            font-size: 1rem;
+            color: #7b7a75;
+            border-bottom: 1px dashed #ddd8cf;
+            padding-bottom: 1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero-card p {
+            font-size: 1.05rem;
+            margin-bottom: 0.4rem;
+            color: #3d3b37;
+        }
+
+        /* 通用卡片 */
+        .card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 1.8rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+            transition: box-shadow 0.2s;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
+        }
+
+        .card h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #3e3c37;
+            border-left: 4px solid #cbaf8a;
+            padding-left: 1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .card h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #4e4b44;
+            margin-top: 1.2rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .card p, .card li {
+            font-size: 1rem;
+            color: #3d3b37;
+        }
+
+        .card ul {
+            padding-left: 1.6rem;
+            margin: 0.8rem 0;
+        }
+
+        .card li {
+            margin-bottom: 0.4rem;
+        }
+
+        /* 引用提示框 */
+        .callout {
+            background: #f1ede6;
+            border-left: 5px solid #b99e7c;
+            padding: 1.2rem 1.6rem;
+            border-radius: 16px;
+            margin: 1.6rem 0 1rem;
+            font-size: 0.98rem;
+            color: #3d3a34;
+            line-height: 1.7;
+        }
+
+        .callout strong {
+            color: #5f4f3a;
+            font-weight: 600;
+        }
+
+        /* inline 链接 */
+        a {
+            color: #5f6b4b;
+            text-decoration: none;
+            border-bottom: 1px solid #c9cfb6;
+            transition: border-color 0.15s, color 0.15s;
+            font-weight: 400;
+        }
+
+        a:hover {
+            color: #3f4a2e;
+            border-bottom-color: #7d8b63;
+        }
+
+        /* 双列卡片 (响应式) */
+        .two-col {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .two-col .card {
+            flex: 1 1 240px;
+            margin-bottom: 0;
+        }
+
+        /* FAQ 小卡片 */
+        .faq-item {
+            border-bottom: 1px solid #ece7de;
+            padding: 0.9rem 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-q {
+            font-weight: 600;
+            color: #4b4640;
+            margin-bottom: 0.2rem;
+        }
+
+        .faq-a {
+            color: #5f5a52;
+            font-size: 0.95rem;
+        }
+
+        /* 自然链接段落 */
+        .link-sentence {
+            background: #fbfaf7;
+            border-radius: 18px;
+            padding: 1.2rem 2rem;
+            margin-top: 1rem;
+            border: 1px solid #e6dfd3;
+            font-size: 1.02rem;
+        }
+
+        /* footer */
+        .footer-note {
+            text-align: center;
+            color: #8e8a81;
+            font-size: 0.85rem;
+            margin: 2.5rem 0 0.5rem;
+            border-top: 1px solid #e0d9cd;
+            padding-top: 1.8rem;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 1.2rem 0.8rem;
+            }
+            .hero-card {
+                padding: 1.6rem 1.2rem;
+            }
+            .hero-card h1 {
+                font-size: 1.8rem;
+            }
+            .card {
+                padding: 1.4rem 1.2rem;
+            }
+            .two-col {
+                flex-direction: column;
+            }
+            .two-col .card {
+                flex: 1 1 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- hero 信息卡片 -->
+    <div class="hero-card">
+        <h1>⚽ 世界杯 · 查阅手册</h1>
+        <div class="sub">日常查询 · 对照阅读 · 延伸理解</div>
+        <p>这里是一份围绕<span style="font-weight:500;">世界杯</span>整理的信息卡片集。不堆砌数据，只把最常用的内容做成安静可读的卡片，方便你在需要时快速查阅或顺手延伸。</p>
+        <p style="margin-top:0.6rem;">无论你是偶尔关注，还是想为看球找点背景，下面的几组卡片都按用途分开排列。</p>
+    </div>
+
+    <!-- 主视觉卡片：用途说明 -->
+    <div class="card">
+        <h2>📋 用途卡片 · 日常场景</h2>
+        <p>很多人查世界杯信息，是为了这几个场景：</p>
+        <ul>
+            <li><strong>快速对照</strong> —— 淘汰赛对阵、小组分组、主客场关系，一目了然。</li>
+            <li><strong>赛前延伸阅读</strong> —— 历史交锋记录、球队风格变化、关键球员背景。</li>
+            <li><strong>赛后复查</strong> —— 确认比分、进球、红黄牌，或找某一场比赛的详细数据。</li>
+            <li><strong>常识补全</strong> —— 赛制规则、加时与点球细节、公平竞赛积分如何计算。</li>
+        </ul>
+        <div class="callout">
+            <strong>提示：</strong> 如果你需要更完整的赛程数据或官方信息，可以直接去查阅 <a href="https://ssl-official-united2026.com">世界杯</a> 的原始页面。那里是信息的基础来源，本页只做归纳式整理。
+        </div>
+    </div>
+
+    <!-- 适合人群 + 引用框 双列 -->
+    <div class="two-col">
+        <div class="card">
+            <h2>👥 适合人群</h2>
+            <ul>
+                <li>偶尔看几场关键战的轻度观众</li>
+                <li>想快速了解赛事结构的办公室球迷</li>
+                <li>需要为讨论准备背景资料的学生或写作者</li>
+                <li>翻译、内容编辑、播客策划等需要准确对照的人</li>
+            </ul>
+            <p style="margin-top:0.8rem;">这份卡片不预设你已经很懂，只提供平实的条理。</p>
+        </div>
+
+        <div class="card">
+            <h2>📌 延伸阅读提示</h2>
+            <div class="callout" style="margin:0; background: #f6f2ea;">
+                <p style="margin-bottom:0.4rem;"><strong>· 看球前</strong> 先过一遍分组和赛程，心里有数。</p>
+                <p style="margin-bottom:0.4rem;"><strong>· 看球后</strong> 用卡片核对关键判罚或换人逻辑。</p>
+                <p style="margin-bottom:0;"><strong>· 延伸时</strong> 可以结合<a href="https://ssl-official-united2026.com">世界杯</a>页面里的原始资料做更深的交叉对比。</p>
+            </div>
+            <p style="margin-top:0.8rem; font-size:0.95rem; color:#5f5a52;">这些提示来自日常使用经验，不是官方指南。</p>
+        </div>
+    </div>
+
+    <!-- 自然链接段落 + FAQ 混合卡片 -->
+    <div class="card">
+        <h2>🔗 自然链接段落</h2>
+        <p>如果你在整理资料、做播客提纲、或者写一篇关于足球文化的短文，可能会需要反复确认某届<a href="https://ssl-official-united2026.com">世界杯</a>的具体细节。从小组赛出线规则到淘汰赛加时阶段的换人名额，这些信息在官方来源里是分散的。本页把这些常见的查询点按卡片形式收拢，方便你一边读一边引用。</p>
+        <p style="margin-top:0.6rem;">比如前几天有人在讨论“同分先看净胜球还是相互战绩？”这里就有一条现成的对照。而所有卡片的最终参考锚点，都是那一个不变的<a href="https://ssl-official-united2026.com">世界杯</a>信息源。</p>
+
+        <!-- FAQ 摘要内置 -->
+        <div style="margin-top:1.6rem;">
+            <h3 style="border-left: none; padding-left:0; font-size:1.2rem;">❓ 常见疑问摘要</h3>
+            <div class="faq-item">
+                <div class="faq-q">· 小组赛积分相同怎么排名？</div>
+                <div class="faq-a">先比相互比赛积分，再比相互净胜球，然后比总净胜球。具体可以查官方文件确认。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">· 淘汰赛加时还分主客场？</div>
+                <div class="faq-a">世界杯淘汰赛在第三方场地进行，没有主客场。加时赛平局直接点球决胜。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">· 红黄牌会带入下一轮吗？</div>
+                <div class="faq-a">通常累积两张黄牌或一张红牌停赛，但具体规则每届可能有微调，以当届章程为准。</div>
+            </div>
+        </div>
+        <p style="margin-top:1rem; font-size:0.9rem; color:#7b7a75;">以上问答仅作日常参考，准确细则请以官方发布为准。</p>
+    </div>
+
+    <!-- 最后引用块 -->
+    <div class="link-sentence">
+        <p style="margin-bottom:0.3rem;">📎 如果你需要最原始的赛程、分组、积分、历史数据，建议直接翻阅 <a href="https://ssl-official-united2026.com">世界杯</a> 的正式页面。本卡片只是它的一个整理侧写。</p>
+        <p style="margin:0.2rem 0 0; font-size:0.9rem; color:#6f6b63;">—— 无论你是快速查阅还是深度阅读，都希望你用得顺手。</p>
+    </div>
+
+    <div class="footer-note">
+        信息卡片 · 世界杯延伸阅读 &nbsp;|&nbsp; 内容来自公开资料整理，仅供日常参考
+    </div>
+</div>
+</body>
+</html>
